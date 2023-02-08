@@ -66,17 +66,23 @@ class elonMuskFetch():
         return dictObj
     
     
-    def run_but(self):
+    def run_bot(self):
 
-        muskTimeline = muskTimeline.fetch_musk_timeline(self.muskUserId)
+        muskTweetTimeline = muskTimeline.fetch_musk_timeline(self.muskUserId)
 
-        for tweet in muskTimeline:
+        count = 0
+
+        for tweet in muskTweetTimeline:
 
             # creating a dictionary of the tweet data
             tweetDictObj = self.create_dict_obj(tweet.id)
 
             # adding the dictionary to a list
             self.listOfTweetDicts.append(tweetDictObj)
+
+            count += 1
+
+            print(f"tweetData - count = {count}")
 
         # create dataframe of list
         tweetDf = pd.DataFrame.from_dict(self.listOfTweetDicts)

@@ -1,4 +1,4 @@
 class openAiKey():
 
-    openAiKey = "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"
+    openAiKey = "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"
 

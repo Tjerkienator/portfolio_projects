@@ -19,5 +19,5 @@ if __name__ == '__main__':
     process_tweetSentiment = Process(target = tweetSentiment.exc_bot)
 
     # start processes
-    # process_elonMuskFetch.start()
+    process_elonMuskFetch.start()
     process_tweetSentiment.start()

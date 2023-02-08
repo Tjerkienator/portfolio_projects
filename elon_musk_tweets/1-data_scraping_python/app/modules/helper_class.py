@@ -59,7 +59,14 @@ class openAi():
 
 class muskTimeline():
 
+    def __init__(self):
+
+        # creating a Twitter API object
+        self.auth = tweepy.OAuthHandler(twitterKeys['api_key'], twitterKeys['api_key_secret'])
+        self.auth.set_access_token(twitterKeys['access_token'], twitterKeys['access_token_secret'])
+        self.api = tweepy.API(self.auth, wait_on_rate_limit=True)
+
     # function to fetch the timeline of Elon Musk
     def fetch_musk_timeline(self, userId):
 
-        return tweepy.Cursor(self.api.user_timeline, user_id = userId, exclude_replies= True, include_rts = False).items(limit = 2000)
+        return tweepy.Cursor(self.api.user_timeline, user_id = userId, exclude_replies= True, include_rts = False).items(limit = 10000)

@@ -38,9 +38,11 @@ class tweetSentiment():
     
     def run_but(self):
 
-        muskTimeline = muskTimeline.fetch_musk_timeline(self.muskUserId)
+        muskTweetTimeline = muskTimeline.fetch_musk_timeline(self.muskUserId)
 
-        for tweet in muskTimeline:
+        count = 0
+
+        for tweet in muskTweetTimeline:
 
             tweetSentiment = ((openAi.determine_tweet_sentiment(tweet.text)).strip(' \n')).lower()
             
@@ -53,7 +55,11 @@ class tweetSentiment():
             # adding the dictionary to a list
             self.listOfTweetDicts.append(tweetDictObj)
 
-            sleep(1)
+            count += 1
+
+            print(f"tweetSentiment - count = {count}")
+
+            sleep(0.1)
 
         # create dataframe of list
         tweetDf = pd.DataFrame.from_dict(self.listOfTweetDicts)
