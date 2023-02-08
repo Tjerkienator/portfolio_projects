@@ -71,7 +71,7 @@ class elonMuskFetch():
         return dictObj
     
     
-    def run_bot(self):
+    def run_but(self):
 
         muskTimeline = self.fetch_musk_timeline(self.muskUserId)
 
@@ -88,6 +88,7 @@ class elonMuskFetch():
 
         # create csv from dataframe
         tweetDf.to_csv("app/csv_export/musk_tweet_data.csv")
+
 
     def exc_bot(self):
 
