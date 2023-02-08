@@ -52,6 +52,8 @@ class tweetSentiment():
             # adding the dictionary to a list
             self.listOfTweetDicts.append(tweetDictObj)
 
+            sleep(1)
+
         # create dataframe of list
         tweetDf = pd.DataFrame.from_dict(self.listOfTweetDicts)
 

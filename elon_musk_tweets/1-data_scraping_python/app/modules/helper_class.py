@@ -9,8 +9,7 @@ from app.data.openAi_api_key import openAiKey
 openAiKey = openAiKey().openAiKey
 
 
-# creating a class that fetches single tweets including extra tweet fields (data fields) 
-# using Tweepy API V2
+# creating a class that fetches single tweets including extra tweet fields (data fields) using Tweepy API V2
 class fetchTweet():
 
     def __init__(self):
@@ -25,6 +24,7 @@ class fetchTweet():
         return tweet
     
 
+# creating a class that manages the openAi prompt and connection
 class openAi():
 
     def determine_tweet_sentiment(self, tweetString):
@@ -51,6 +51,6 @@ class openAi():
             
             except Exception as e:
                 print(e)
-                sleep(60)
+                sleep(5)
 
         return response["choices"][0]["text"]
