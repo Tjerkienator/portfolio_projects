@@ -38,6 +38,7 @@ class elonMuskFetch():
 
         tweetData = fetchTweet.fetch_tweet(tweetId)
 
+        # creating a string of the different context annotations instead of having huge dictionaries
         contextString = ""
 
         for context in tweetData.context_annotations:
@@ -46,6 +47,7 @@ class elonMuskFetch():
 
                 contextString += f"{context['domain']['name']}, "
 
+        # creating dict obj
         dictObj = {
             "tweetId": tweetData.id,
             "tweetText": tweetData.text,
@@ -69,7 +71,7 @@ class elonMuskFetch():
         return dictObj
     
     
-    def run_script(self):
+    def run_bot(self):
 
         muskTimeline = self.fetch_musk_timeline(self.muskUserId)
 
@@ -85,8 +87,8 @@ class elonMuskFetch():
         tweetDf = pd.DataFrame.from_dict(self.listOfTweetDicts)
 
         # create csv from dataframe
-        tweetDf.to_csv("app/csv/testfile.csv")
+        tweetDf.to_csv("app/csv_export/musk_tweet_data.csv")
 
     def exc_bot(self):
 
-        self.run_script()
+        self.run_bot()
