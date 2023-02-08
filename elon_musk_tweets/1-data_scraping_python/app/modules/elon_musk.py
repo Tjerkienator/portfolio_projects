@@ -7,8 +7,9 @@ import pandas as pd
 from app.data.twitter_api_keys import TwitterApiKeys
 twitterKeys = TwitterApiKeys.twitterKeys
 
-from app.modules.helper_class import fetchTweet
+from app.modules.helper_class import fetchTweet, muskTimeline
 fetchTweet = fetchTweet()
+muskTimeline = muskTimeline()
 
 
 class elonMuskFetch():
@@ -26,12 +27,6 @@ class elonMuskFetch():
         self.auth = tweepy.OAuthHandler(twitterKeys['api_key'], twitterKeys['api_key_secret'])
         self.auth.set_access_token(twitterKeys['access_token'], twitterKeys['access_token_secret'])
         self.api = tweepy.API(self.auth, wait_on_rate_limit=True)
-
-
-    # function to fetch the timeline of Elon Musk
-    def fetch_musk_timeline(self, userId):
-
-        return tweepy.Cursor(self.api.user_timeline, user_id = userId, exclude_replies= True, include_rts = False).items(limit = 20)
     
 
     def create_dict_obj(self, tweetId):
@@ -73,7 +68,7 @@ class elonMuskFetch():
     
     def run_but(self):
 
-        muskTimeline = self.fetch_musk_timeline(self.muskUserId)
+        muskTimeline = muskTimeline.fetch_musk_timeline(self.muskUserId)
 
         for tweet in muskTimeline:
 

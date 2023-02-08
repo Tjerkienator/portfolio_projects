@@ -7,9 +7,10 @@ import pandas as pd
 from app.data.twitter_api_keys import TwitterApiKeys
 twitterKeys = TwitterApiKeys.twitterKeys
 
-from app.modules.helper_class import fetchTweet, openAi
+from app.modules.helper_class import fetchTweet, openAi, muskTimeline
 fetchTweet = fetchTweet()
 openAi = openAi()
+muskTimeline = muskTimeline()
 
 
 class tweetSentiment():
@@ -37,7 +38,7 @@ class tweetSentiment():
     
     def run_but(self):
 
-        muskTimeline = self.fetch_musk_timeline(self.muskUserId)
+        muskTimeline = muskTimeline.fetch_musk_timeline(self.muskUserId)
 
         for tweet in muskTimeline:
 

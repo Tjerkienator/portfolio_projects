@@ -54,3 +54,12 @@ class openAi():
                 sleep(5)
 
         return response["choices"][0]["text"]
+    
+
+
+class muskTimeline():
+
+    # function to fetch the timeline of Elon Musk
+    def fetch_musk_timeline(self, userId):
+
+        return tweepy.Cursor(self.api.user_timeline, user_id = userId, exclude_replies= True, include_rts = False).items(limit = 2000)
