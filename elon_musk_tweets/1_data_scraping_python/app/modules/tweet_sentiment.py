@@ -28,24 +28,21 @@ class tweetSentiment():
         self.auth = tweepy.OAuthHandler(twitterKeys['api_key'], twitterKeys['api_key_secret'])
         self.auth.set_access_token(twitterKeys['access_token'], twitterKeys['access_token_secret'])
         self.api = tweepy.API(self.auth, wait_on_rate_limit=True)
-
-
-    # function to fetch the timeline of Elon Musk
-    def fetch_musk_timeline(self, userId):
-
-        return tweepy.Cursor(self.api.user_timeline, user_id = userId, exclude_replies= True, include_rts = False).items(limit = 20)
     
     
+    # creating a function that contains and runs the full script
     def run_but(self):
 
+        # creating the twitter timeline of Elon Musk as variable
         muskTweetTimeline = muskTimeline.fetch_musk_timeline(self.muskUserId)
 
-        count = 0
-
+        # itterating over tweets by Elon Musk
         for tweet in muskTweetTimeline:
 
+            # determining the tweet sentiment and setting it a a variable
             tweetSentiment = ((openAi.determine_tweet_sentiment(tweet.text)).strip(' \n')).lower()
             
+            # creating a dictionary of values
             tweetDictObj = {
                 "tweetId": tweet.id,
                 "tweetText": tweet.text,
@@ -54,10 +51,6 @@ class tweetSentiment():
 
             # adding the dictionary to a list
             self.listOfTweetDicts.append(tweetDictObj)
-
-            count += 1
-
-            print(f"tweetSentiment - count = {count}")
 
             sleep(0.1)
 
@@ -68,6 +61,7 @@ class tweetSentiment():
         tweetDf.to_csv("app/csv_export/musk_tweet_sentiment.csv")
 
 
+    # creating a function that will execute the script
     def exc_bot(self):
 
         self.run_but()

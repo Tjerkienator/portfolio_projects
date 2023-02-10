@@ -70,9 +70,8 @@ class elonMuskFetch():
     # creating a function that contains the full script
     def run_bot(self):
 
+        # creating the twitter timeline of Elon Musk as a variable
         muskTweetTimeline = muskTimeline.fetch_musk_timeline(self.muskUserId)
-
-        count = 0
 
         # itterating over tweets by Elon Musk
         for tweet in muskTweetTimeline:
@@ -82,10 +81,6 @@ class elonMuskFetch():
 
             # adding the dictionary to a list
             self.listOfTweetDicts.append(tweetDictObj)
-
-            count += 1
-
-            print(f"tweetData - count = {count}")
 
         # create dataframe of list
         tweetDf = pd.DataFrame.from_dict(self.listOfTweetDicts)
