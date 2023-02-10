@@ -5,7 +5,7 @@ from multiprocessing import Pool, Process
 from app.data.twitter_api_keys import TwitterApiKeys
 twitterKeys = TwitterApiKeys.twitterKeys
 
-from app.modules.elon_musk import elonMuskFetch
+from app.modules.tweet_data import elonMuskFetch
 elonMuskFetch = elonMuskFetch()
 
 from app.modules.tweet_sentiment import tweetSentiment

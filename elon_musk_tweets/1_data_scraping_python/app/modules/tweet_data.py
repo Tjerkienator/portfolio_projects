@@ -29,6 +29,7 @@ class elonMuskFetch():
         self.api = tweepy.API(self.auth, wait_on_rate_limit=True)
     
 
+    # creating a function to make a dictionary object from each tweet that will be added to a list.
     def create_dict_obj(self, tweetId):
 
         tweetData = fetchTweet.fetch_tweet(tweetId)
@@ -66,12 +67,14 @@ class elonMuskFetch():
         return dictObj
     
     
+    # creating a function that contains the full script
     def run_bot(self):
 
         muskTweetTimeline = muskTimeline.fetch_musk_timeline(self.muskUserId)
 
         count = 0
 
+        # itterating over tweets by Elon Musk
         for tweet in muskTweetTimeline:
 
             # creating a dictionary of the tweet data
@@ -91,6 +94,7 @@ class elonMuskFetch():
         tweetDf.to_csv("app/csv_export/musk_tweet_data.csv")
 
 
+    # creating a function that will execute the script
     def exc_bot(self):
 
         self.run_bot()
