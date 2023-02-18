@@ -12,7 +12,7 @@ fetchTweet = fetchTweet()
 muskTimeline = muskTimeline()
 
 
-class elonMuskFetch():
+class tweetData():
 
 
     def __init__(self):
@@ -86,7 +86,7 @@ class elonMuskFetch():
         tweetDf = pd.DataFrame.from_dict(self.listOfTweetDicts)
 
         # create csv from dataframe
-        tweetDf.to_csv("app/csv_export/musk_tweet_data.csv")
+        tweetDf.to_csv("app/csv_export/musk_tweet_data.csv", encoding = 'utf-8-sig')
 
 
     # creating a function that will execute the script

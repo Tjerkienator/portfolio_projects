@@ -10,28 +10,67 @@ Cleaning Data in SQL Queries
 -- Looking at both tables after importing them into Big Queary from CSV files --
 
 
-SELECT *
-FROM `concrete-tuner-297911.musktweetdata.musk_tweet_Data`
+SELECT * 
+FROM tweet_data
 
-SELECT *
-FROM `concrete-tuner-297911.musktweetdata.tweet_sentiment`
+SELECT * 
+FROM tweet_sentiment
 
 
 ------------------------------------------------------------------------------------------
 
 -- Changing tweetAttachments value --
 
-SELECT DISTINCT(tweetAttachments), COUNT(tweetAttachments)
-FROM `concrete-tuner-297911.musktweetdata.musk_tweet_Data`
-GROUP BY tweetAttachments
-ORDER BY tweetAttachments
+SELECT DISTINCT(tweetAttachment), COUNT(tweetAttachment)
+FROM tweet_Data
+GROUP BY tweetAttachment
+ORDER BY tweetAttachment
 
-SELECT tweetId, tweetAttachments
-FROM `concrete-tuner-297911.musktweetdata.musk_tweet_Data`
-WHERE tweetAttachments IS NULL
+SELECT *
+FROM tweet_data
+WHERE LENGTH(tweetAttachment) = 0
 
--- Looking at the results of above queries, I can conclude that there are 2 types of tweetAttachments. "media_keys" which stands a media file, and "poll_ids" which stands for a Twitter poll. The 3rd available variable is null, which provides us with 311 rows -- 
+-- Looking at the results of above queries, I can conclude that there are 2 types of tweetAttachments. "media_keys" which stands a media file, and "poll_ids" which stands for a Twitter poll. The 3rd available variable is null, which provides us with 311 rows. Somehow "WHERE tweetAttachement IS NULL" isn't showing the 311 results, so I used a LENGTH function instead. -- 
 
-UPDATE `musktweetdata.musk_tweet_Data`
-SET tweetAttachements = "None"
-WHERE tweetAttachements IS NULL
+-- Next step will be to change the different kind of tweetAttachments in easy to understand values -- 
+
+UPDATE tweet_data
+SET tweetAttachment = IF(LENGTH(tweetAttachment) = 0, "None", IF(tweetAttachment LIKE "%media_keys%", "Media", IF(tweetAttachment LIKE "%poll_ids%", "Poll", "None")))
+
+------------------------------------------------------------------------------------------
+
+-- Adding New Column --
+
+-- I would like to add another column displaying which tweetText contains a url (https). The value of this new column will be a boolean -- 
+
+SELECT tweetText
+FROM tweet_data
+WHERE tweetText LIKE "%https%"
+
+-- Above query shows 199 records. I will now add a new column -- 
+
+ALTER TABLE tweet_data
+ADD COLUMN URL VARCHAR(8)
+
+SELECT tweetId, URL
+FROM tweet_data LIMIT 10
+
+-- URL column created successfuly. Adding True, False values next -- 
+
+UPDATE tweet_data
+SET URL = IF(tweetText LIKE "%https%", "Yes", "No")
+
+------------------------------------------------------------------------------------------
+
+-- Tweet Context --
+
+-- Each tweet has multiple context categories, I want to use this data to see what context is used most, what the engagement per context is, and how the tweet sentiment is used per context. -- 
+
+
+-- I wan't to find out what the min and max amount of "," in tweetContext is so I can know the what number of substrings to use --
+
+SELECT MAX(LENGTH(tweetContext) - LENGTH(REPLACE(tweetContext, ",", ""))) AS max_commas, min(LENGTH(tweetContext) - LENGTH(REPLACE(tweetContext, ",", ""))) AS min_commas
+FROM tweet_data
+
+
+
