@@ -58,7 +58,7 @@ class tweetSentiment():
         tweetDf = pd.DataFrame.from_dict(self.listOfTweetDicts)
 
         # create csv from dataframe
-        tweetDf.to_csv("app/csv_export/musk_tweet_sentiment.csv")
+        tweetDf.to_csv("app/csv_export/musk_tweet_sentiment.csv", index = False)
 
 
     # creating a function that will execute the script

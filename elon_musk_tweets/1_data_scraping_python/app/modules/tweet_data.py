@@ -76,7 +76,7 @@ class tweetData():
         tweetDf = pd.DataFrame.from_dict(self.listOfTweetDicts)
 
         # create csv from dataframe
-        tweetDf.to_csv("app/csv_export/musk_tweet_data.csv", encoding = 'utf-8-sig')
+        tweetDf.to_csv("app/csv_export/musk_tweet_data.csv", index = False)
 
 
     # creating a function that will execute the script
