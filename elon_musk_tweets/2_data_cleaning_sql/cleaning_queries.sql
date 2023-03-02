@@ -62,15 +62,30 @@ SET URL = IF(tweetText LIKE "%https%", "Yes", "No")
 
 ------------------------------------------------------------------------------------------
 
--- Tweet Context --
+-- DROPPING COLUMNS -- 
 
--- Each tweet has multiple context categories, I want to use this data to see what context is used most, what the engagement per context is, and how the tweet sentiment is used per context. -- 
+-- conversationId -- 
 
+-- I want to see if all the conversationIds are equal to their corresponding tweetId. If they are all the same we know the conversationId column can be deleted. -- 
 
--- I wan't to find out what the min and max amount of "," in tweetContext is so I can know the what number of substrings to use --
-
-SELECT MAX(LENGTH(tweetContext) - LENGTH(REPLACE(tweetContext, ",", ""))) AS max_commas, min(LENGTH(tweetContext) - LENGTH(REPLACE(tweetContext, ",", ""))) AS min_commas
+SELECT tweetId, conversationId
 FROM tweet_data
+WHERE NOT tweetId = conversationId
 
+-- As above query gives us 0 records we can continue and drop the conversationId column -- 
 
+ALTER TABLE tweet_data
+DROP COLUMN conversationId
 
+-- replyToUserId -- 
+
+-- I want to see if there are any rows with where LENGTH(value) is larger than 0 -- 
+
+SELECT replyToUserId
+FROM tweet_data
+WHERE LENGTH(replyToUserId) > 0
+
+-- As above query gives us 0 records we can continue and drop the replyToUserId column -- 
+
+ALTER TABLE tweet_data
+DROP COLUMN replyToUserId

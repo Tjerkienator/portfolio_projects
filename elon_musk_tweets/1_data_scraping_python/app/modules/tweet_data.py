@@ -34,15 +34,6 @@ class tweetData():
 
         tweetData = fetchTweet.fetch_tweet(tweetId)
 
-        # creating a string of the different context annotations instead of having huge dictionaries
-        contextString = ""
-
-        for context in tweetData.context_annotations:
-
-            if not f"{context['domain']['name']}" in contextString:
-
-                contextString += f"{context['domain']['name']}, "
-
         # creating dict obj
         dictObj = {
             "tweetId": tweetData.id,
@@ -51,7 +42,6 @@ class tweetData():
             "tweetCount@": (tweetData.text).count('@'),
             "tweetCount#": (tweetData.text).count('#'),
             "tweetAttachments": tweetData.attachments,
-            "tweetContextAnnotations": contextString,
             "tweetConversationId": tweetData.conversation_id,
             "tweetCreatedAt": tweetData.created_at.strftime("%d-%m-%Y"),     
             "tweetReplyToUserId": tweetData.in_reply_to_user_id,     
