@@ -95,6 +95,29 @@ FROM tweet_data
 
 ------------------------------------------------------------------------------------------
 
+-- MISSING DATA --
+
+-- impressionCount --
+
+-- The column impressionCount misses data for a large amount of tweets. I want to determine if I should remove the column or ignore the missing data. --
+
+SELECT (
+	(SELECT COUNT(impressionCount)
+	FROM tweet_data
+	WHERE impressionCount = 0)
+	/
+	(SELECT COUNT(impressionCount)
+	FROM tweet_data
+	WHERE NOT impressionCount IS NULL)) * 100 
+AS missing_data_percentage
+
+-- Above query shows that over 61% of records are missing data for impressionCount, therefor I decide to drop that column as it has no use in the later data analysis. --
+
+ALTER TABLE tweet_data
+DROP COLUMN impressionCount
+	
+------------------------------------------------------------------------------------------
+
 -- DROPPING COLUMNS -- 
 
 -- conversationId -- 
