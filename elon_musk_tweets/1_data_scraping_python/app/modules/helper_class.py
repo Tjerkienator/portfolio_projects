@@ -19,7 +19,7 @@ class fetchTweet():
     
     def fetch_tweet(self, tweetId):
 
-        tweet = self.client.get_tweet(id = tweetId, user_auth = True, tweet_fields = ["attachments", "context_annotations", "conversation_id", "created_at", "in_reply_to_user_id", "lang", "public_metrics", "possibly_sensitive", "source"]).data
+        tweet = self.client.get_tweet(id = tweetId, user_auth = True, tweet_fields = ["attachments", "conversation_id", "created_at", "in_reply_to_user_id", "lang", "public_metrics", "possibly_sensitive", "source"]).data
 
         return tweet
     
