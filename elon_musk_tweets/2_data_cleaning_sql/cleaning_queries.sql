@@ -62,12 +62,36 @@ SET URL = IF(tweetText LIKE "%https%", "Yes", "No")
 
 ------------------------------------------------------------------------------------------
 
--- SETTING tweetLanguage VALUES -- 
+-- SETTING tweetLanFull VALUES -- 
+
+-- I want to make the different tweetLanguage abbreviation easier to read and recognize. -- 
 
 SELECT DISTINCT(tweetLanguage), COUNT(tweetLanguage)
 FROM tweet_data
 GROUP BY tweetLanguage
 ORDER BY 2 DESC
+
+ALTER TABLE tweet_data
+ADD COLUMN tweetLanFull VARCHAR(50)
+
+UPDATE tweet_data
+SET tweetLanFull = 
+IF(tweetLanguage = "en", "English", 
+IF(tweetLanguage = "zxx", "No linguitic content",
+IF(tweetLanguage = "und", "Undefined",
+IF(tweetLanguage = "qst", "Very short text",
+IF(tweetLanguage = "art", "Artificial",
+IF(tweetLanguage = "fr", "French",
+IF(tweetLanguage = "in", "Indonesian",
+IF(tweetLanguage = "pt", "Portuguese",
+IF(tweetLanguage = "it", "Italien",
+IF(tweetLanguage = "et", "Estonian",
+IF(tweetLanguage = "ca", "Catalan",
+IF(tweetLanguage = "ht", "Haitian",
+IF(tweetLanguage = "el", "Modern Greek", "")))))))))))))
+
+SELECT tweetText, tweetLanguage, tweetLanFull
+FROM tweet_data
 
 ------------------------------------------------------------------------------------------
 
@@ -112,4 +136,4 @@ GROUP BY possiblySensitive
 ALTER TABLE tweet_data
 DROP COLUMN possiblySensitive
 
-
+------------------------------------------------------------------------------------------
