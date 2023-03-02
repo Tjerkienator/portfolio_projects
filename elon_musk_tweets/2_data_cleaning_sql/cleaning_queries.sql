@@ -62,6 +62,15 @@ SET URL = IF(tweetText LIKE "%https%", "Yes", "No")
 
 ------------------------------------------------------------------------------------------
 
+-- SETTING tweetLanguage VALUES -- 
+
+SELECT DISTINCT(tweetLanguage), COUNT(tweetLanguage)
+FROM tweet_data
+GROUP BY tweetLanguage
+ORDER BY 2 DESC
+
+------------------------------------------------------------------------------------------
+
 -- DROPPING COLUMNS -- 
 
 -- conversationId -- 
@@ -89,3 +98,18 @@ WHERE LENGTH(replyToUserId) > 0
 
 ALTER TABLE tweet_data
 DROP COLUMN replyToUserId
+
+-- possiblySensitive -- 
+
+-- I want to see if any other value than FALSE for possiblySensitive -- 
+
+SELECT DISTINCT(possiblySensitive), COUNT(possiblySensitive)
+FROM tweet_data
+GROUP BY possiblySensitive
+
+-- As above query shows us that all values are FALSE we can continue and drop the replyToUserId column -- 
+
+ALTER TABLE tweet_data
+DROP COLUMN possiblySensitive
+
+
