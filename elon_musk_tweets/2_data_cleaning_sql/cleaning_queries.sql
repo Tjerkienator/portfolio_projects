@@ -77,7 +77,7 @@ ADD COLUMN tweetLanFull VARCHAR(50)
 UPDATE tweet_data
 SET tweetLanFull = 
 IF(tweetLanguage = "en", "English", 
-IF(tweetLanguage = "zxx", "No linguitic content",
+IF(tweetLanguage = "zxx", "No linguistic content",
 IF(tweetLanguage = "und", "Undefined",
 IF(tweetLanguage = "qst", "Very short text",
 IF(tweetLanguage = "art", "Artificial",
@@ -167,5 +167,8 @@ SELECT DISTINCT(sentimentNew), COUNT(sentimentNew)
 FROM tweet_sentiment
 GROUP BY sentimentNew
 ORDER BY 2 DESC
+
+ALTER TABLE tweet_sentiment
+RENAME COLUMN sentimentNew TO tweetSentiment
 
 ------------------------------------------------------------------------------------------
