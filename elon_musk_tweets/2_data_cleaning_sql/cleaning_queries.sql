@@ -108,8 +108,7 @@ SELECT (
 	/
 	(SELECT COUNT(impressionCount)
 	FROM tweet_data
-	WHERE NOT impressionCount IS NULL)) 
-    * 100 
+	WHERE NOT impressionCount IS NULL)) * 100 
 AS missing_data_percentage
 
 -- Above query shows that over 61% of records are missing data for impressionCount, therefor I decide to drop that column as it has no use in the later data analysis. --
