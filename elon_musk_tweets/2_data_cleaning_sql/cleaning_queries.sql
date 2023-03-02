@@ -7,7 +7,7 @@ Cleaning Data in SQL Queries
 
 ------------------------------------------------------------------------------------------
 
--- Looking at both tables after importing them into Big Queary from CSV files --
+-- Looking at both tables after importing them into SQLPro from CSV files --
 
 
 SELECT * 
@@ -135,5 +135,37 @@ GROUP BY possiblySensitive
 
 ALTER TABLE tweet_data
 DROP COLUMN possiblySensitive
+
+------------------------------------------------------------------------------------------
+
+-- tweet_sentiment table -- 
+
+-- tweetSentiment -- 
+
+-- I need to clean up the tweetSentiment column because not all cells contain workable values. -- 
+
+SELECT *
+FROM tweet_sentiment
+
+SELECT DISTINCT(tweetSentiment), COUNT(tweetSentiment)
+FROM tweet_sentiment
+GROUP BY tweetSentiment
+ORDER BY 2 DESC
+
+ALTER TABLE tweet_sentiment
+ADD COLUMN sentimentNew VARCHAR(30)
+
+UPDATE tweet_sentiment
+SET sentimentNew = IF(tweetSentiment LIKE "%negative%", "negative",
+IF(tweetSentiment LIKE "%positive%", "positive",
+IF(tweetSentiment LIKE "%neutral%", "neutral","unknown")))
+
+ALTER TABLE tweet_sentiment
+DROP COLUMN tweetSentiment
+
+SELECT DISTINCT(sentimentNew), COUNT(sentimentNew)
+FROM tweet_sentiment
+GROUP BY sentimentNew
+ORDER BY 2 DESC
 
 ------------------------------------------------------------------------------------------
