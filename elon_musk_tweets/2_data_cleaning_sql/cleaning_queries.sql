@@ -37,11 +37,11 @@ WHERE LENGTH(tweetAttachment) = 0
 UPDATE tweet_data
 -- SET tweetAttachment = IF(LENGTH(tweetAttachment) = 0, "None", IF(tweetAttachment LIKE "%media_keys%", "Media", IF(tweetAttachment LIKE "%poll_ids%", "Poll", "None")))
 SET tweetAttachment = CASE 
-						WHEN LENGTH(tweetAttachment) = 0 THEN "None"
-						WHEN tweetAttachment LIKE "%media_keys%" THEN "Media"
-						WHEN tweetAttachment LIKE "%poll_ids%" THEN "Poll"
-						ELSE "None"
-						END
+WHEN LENGTH(tweetAttachment) = 0 THEN "None"
+WHEN tweetAttachment LIKE "%media_keys%" THEN "Media"
+WHEN tweetAttachment LIKE "%poll_ids%" THEN "Poll"
+ELSE "None"
+END
 						
 ALTER TABLE tweet_data
 ADD COLUMN tweetAttachment VARCHAR(50)
