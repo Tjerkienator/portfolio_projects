@@ -90,7 +90,21 @@ ORDER BY 3 DESC
 
 ------------------------------------------------------------------------------------------
 
--- Using CTE to Calculation on Partition By in previous query  --
+-- CTE --
+
+-- Creating CTE called positive_tweets
+
+WITH positive_tweets AS (
+SELECT tweet_data.*, tweet_sentiment.tweetSentiment AS tweetSentiment
+FROM tweet_data
+JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
+WHERE tweetSentiment = "Positive")
 
 
+-- Selecting English tweets only
 
+SELECT *
+FROM positive_tweets
+WHERE tweetLanFull = "English"
+
+------------------------------------------------------------------------------------------
