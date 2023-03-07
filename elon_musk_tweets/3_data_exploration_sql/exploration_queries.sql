@@ -80,3 +80,15 @@ ORDER BY 3 DESC
 
 ------------------------------------------------------------------------------------------
 
+SELECT MAX(tweetLength)
+FROM tweet_data
+
+SELECT tweetLength,
+CASE
+WHEN tweetLength BETWEEN 0 AND 57 THEN "0-57"
+WHEN tweetLength BETWEEN 57 AND 114 THEN "57-114"
+WHEN tweetLength BETWEEN 114 AND 171 THEN "114-171"
+WHEN tweetLength BETWEEN 171 AND 284 THEN "171-284"
+ELSE "unknown"
+END AS length_group
+FROM tweet_data
