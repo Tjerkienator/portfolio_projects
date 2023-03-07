@@ -63,6 +63,16 @@ ORDER BY 3 DESC
 
 ------------------------------------------------------------------------------------------
 
+-- Joining Tables --
+
+-- Joining tables to see the tweet sentiment next to all other tweet data
+
+SELECT tweet_data.*, tweet_sentiment.tweetSentiment
+FROM tweet_data
+JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
+
+------------------------------------------------------------------------------------------
+
 -- Sentiment --
 
 -- Average of engagement metrics per type of tweet sentiment
@@ -80,16 +90,7 @@ ORDER BY 3 DESC
 
 ------------------------------------------------------------------------------------------
 
--- Joining Tables --
+-- Using CTE to Calculation on Partition By in previous query  --
 
--- Joining tables to see the tweet sentiment next to all other tweet data
 
-SELECT tweet_data.*, tweet_sentiment.tweetSentiment
-FROM tweet_data
-JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
 
-------------------------------------------------------------------------------------------
-
--- Temp Table --
-
-DROP TABLE IF EXISTS #
