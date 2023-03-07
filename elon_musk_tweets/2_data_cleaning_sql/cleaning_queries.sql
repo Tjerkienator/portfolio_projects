@@ -35,7 +35,6 @@ WHERE LENGTH(tweetAttachment) = 0
 -- Next step will be to change the different kind of tweetAttachments in easy to understand values -- 
 
 UPDATE tweet_data
--- SET tweetAttachment = IF(LENGTH(tweetAttachment) = 0, "None", IF(tweetAttachment LIKE "%media_keys%", "Media", IF(tweetAttachment LIKE "%poll_ids%", "Poll", "None")))
 SET tweetAttachment = CASE 
 WHEN LENGTH(tweetAttachment) = 0 THEN "None"
 WHEN tweetAttachment LIKE "%media_keys%" THEN "Media"
