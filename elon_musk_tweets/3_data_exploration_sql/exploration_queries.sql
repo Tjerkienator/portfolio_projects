@@ -95,7 +95,7 @@ ORDER BY 3 DESC
 -- Creating CTE called positive_tweets
 
 WITH positive_tweets AS (
-SELECT tweet_data.*, tweet_sentiment.tweetSentiment AS tweetSentiment
+SELECT tweet_data.tweetId, tweet_data.tweetLength, tweet_data.tweetLanFull, tweet_sentiment.tweetSentiment AS tweetSentiment
 FROM tweet_data
 JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
 WHERE tweetSentiment = "positive")
@@ -113,19 +113,27 @@ FROM positive_tweets
 
 -- Creating a TEMP TABLE to do further calculations
 
-DROP TABLE IF EXISTS #positive_tweets
-CREATE TABLE #positive_tweets
+DROP TEMPORARY TABLE IF EXISTS positive_tweets;
+
+CREATE TEMPORARY TABLE positive_tweets
+(
+tweetId bigint,
+tweetLength integer,
+tweetLanFull varchar(150),
+tweetSentiment varchar(100)
+)
 
 
-WITH positive_tweets AS (
-SELECT tweet_data.*, tweet_sentiment.tweetSentiment AS tweetSentiment
+INSERT INTO positive_tweets
+SELECT tweet_data.tweetId, tweet_data.tweetLength, tweet_data.tweetLanFull, tweet_sentiment.tweetSentiment AS tweetSentiment
 FROM tweet_data
 JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
-WHERE tweetSentiment = "positive")
-
+WHERE tweetSentiment = "positive"
 
 -- Selecting English tweets only
 
 SELECT *
-FROM #positive_tweets
+FROM positive_tweets
 WHERE tweetLanFull = "English"
+
+------------------------------------------------------------------------------------------
