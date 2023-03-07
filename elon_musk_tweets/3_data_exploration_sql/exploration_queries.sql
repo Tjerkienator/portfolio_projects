@@ -46,7 +46,7 @@ ROUND(AVG(replyCount),0) AS avg_replies,
 ROUND(AVG(retweetCount),0) AS avg_retweets
 FROM tweet_data
 GROUP BY URL
-ORDER BY 2 DESC, 3 DESC
+ORDER BY 3 DESC
 
 ------------------------------------------------------------------------------------------
 
