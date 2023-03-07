@@ -63,3 +63,10 @@ ROUND(AVG(retweetCount),0) AS avg_retweets
 FROM tweet_data
 GROUP BY tweetAttachment
 ORDER BY 3 DESC
+
+------------------------------------------------------------------------------------------
+
+-- Sentiment --
+
+-- Average of engagement metrics per type of tweet sentiment
+-- Shows what type of sentiment has what effect to a tweets engagement
