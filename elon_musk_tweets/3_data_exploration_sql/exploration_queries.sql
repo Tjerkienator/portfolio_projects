@@ -80,15 +80,16 @@ ORDER BY 3 DESC
 
 ------------------------------------------------------------------------------------------
 
-SELECT MAX(tweetLength)
-FROM tweet_data
+-- Joining Tables --
 
-SELECT tweetLength,
-CASE
-WHEN tweetLength BETWEEN 0 AND 57 THEN "0-57"
-WHEN tweetLength BETWEEN 57 AND 114 THEN "57-114"
-WHEN tweetLength BETWEEN 114 AND 171 THEN "114-171"
-WHEN tweetLength BETWEEN 171 AND 284 THEN "171-284"
-ELSE "unknown"
-END AS length_group
+-- Joining tables to see the tweet sentiment next to all other tweet data
+
+SELECT tweet_data.*, tweet_sentiment.tweetSentiment
 FROM tweet_data
+JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
+
+------------------------------------------------------------------------------------------
+
+-- Temp Table --
+
+DROP TABLE IF EXISTS #
