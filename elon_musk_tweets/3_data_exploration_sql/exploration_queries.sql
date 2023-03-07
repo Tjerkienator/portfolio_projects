@@ -70,3 +70,15 @@ ORDER BY 3 DESC
 
 -- Average of engagement metrics per type of tweet sentiment
 -- Shows what type of sentiment has what effect to a tweets engagement
+
+SELECT DISTINCT(tweet_sentiment.tweetSentiment) AS sentiment, 
+ROUND((COUNT(tweet_sentiment.tweetSentiment)/(SELECT COUNT(*) FROM tweet_sentiment)*100), 2) AS percentage_of_tweets,
+ROUND(AVG(tweet_data.likeCount),0) AS avg_likes,
+ROUND(AVG(tweet_data.replyCount),0) AS avg_replies,
+ROUND(AVG(tweet_data.retweetCount),0) AS avg_retweets
+FROM tweet_data
+JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
+GROUP BY sentiment
+ORDER BY 3 DESC
+
+------------------------------------------------------------------------------------------
