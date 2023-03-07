@@ -35,15 +35,12 @@ WHERE LENGTH(tweetAttachment) = 0
 -- Next step will be to change the different kind of tweetAttachments in easy to understand values -- 
 
 UPDATE tweet_data
-SET tweetAttachment = CASE 
+SET tweet_data.tweetAttachment = CASE 
 WHEN LENGTH(tweetAttachment) = 0 THEN "None"
 WHEN tweetAttachment LIKE "%media_keys%" THEN "Media"
 WHEN tweetAttachment LIKE "%poll_ids%" THEN "Poll"
 ELSE "None"
 END
-						
-ALTER TABLE tweet_data
-ADD COLUMN tweetAttachment VARCHAR(50)
 
 ------------------------------------------------------------------------------------------
 
@@ -208,3 +205,4 @@ ALTER TABLE tweet_sentiment
 RENAME COLUMN sentimentNew TO tweetSentiment
 
 ------------------------------------------------------------------------------------------
+
