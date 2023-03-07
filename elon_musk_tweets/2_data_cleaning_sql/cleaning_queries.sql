@@ -90,14 +90,16 @@ WHEN tweetLanguage = "zxx" THEN "No linguistic content"
 WHEN tweetLanguage = "und" THEN "Undefined"
 WHEN tweetLanguage = "qst" THEN "Very short text"
 WHEN tweetLanguage = "art" THEN "Artificial"
-IF(tweetLanguage = "fr", "French",
-IF(tweetLanguage = "in", "Indonesian",
-IF(tweetLanguage = "pt", "Portuguese",
-IF(tweetLanguage = "it", "Italien",
-IF(tweetLanguage = "et", "Estonian",
-IF(tweetLanguage = "ca", "Catalan",
-IF(tweetLanguage = "ht", "Haitian",
-IF(tweetLanguage = "el", "Modern Greek", "")))))))))))))
+WHEN tweetLanguage = "fr" THEN "French"
+WHEN tweetLanguage = "in" THEN "Indonesian"
+WHEN tweetLanguage = "pt" THEN "Portuguese"
+WHEN tweetLanguage = "it" THEN "Italien"
+WHEN tweetLanguage = "et" THEN "Estonian"
+WHEN tweetLanguage = "ca" THEN "Catalan"
+WHEN tweetLanguage = "ht" THEN "Haitian"
+WHEN tweetLanguage = "el" THEN "Modern Greek"
+ELSE "Unknown"
+END;
 
 SELECT tweetText, tweetLanguage, tweetLanFull
 FROM tweet_data
