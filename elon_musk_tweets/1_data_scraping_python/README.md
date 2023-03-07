@@ -1,9 +1,14 @@
-# Data Scraping with Python
+# Web Scraping and Sentiment Analysis of Elon Musk Tweets
 
-Part one of this project is a web scraping and sentiment analysis of tweets made by Elon Musk. I used the Twitter API to scrape over 400 of his latest tweets, which were exported in a csv file. This csv file contain all publicly available data from his tweets, including their text content, date posted, number of likes/retweets, and more.
+This project involved web scraping and sentiment analysis of tweets made by Elon Musk. Using the Twitter API, over 400 of his latest tweets were extracted and exported into a CSV file. This file contains publicly available data from his tweets, such as their text content, date posted, number of likes/retweets, and other relevant information.
 
-In addition to extracting raw tweet data, I also performed sentiment analysis on each tweet using OpenAI's Natural Language Processing (NLP) platform. This allowed me to determine the overall sentiment or 'mood' of each tweet, ranging from positive to negative. The results of this analysis were included in a second CSV file.
+In addition to the raw tweet data, sentiment analysis was performed on each tweet using OpenAI's Natural Language Processing (NLP) platform. This allowed for an overall assessment of the sentiment or 'mood' of each tweet, ranging from positive to negative. The resulting sentiment analysis was recorded in a separate CSV file for reference.
 
-This is an example of my understanding and application of the Python programming language and its ecosystem. In addition to being proficient in coding, I also understand the importance of data collection and file organization.
+The project required proficiency in Python programming language and its ecosystem, along with a strong understanding of data collection and file organization. Through this project, I have demonstrated our ability to effectively collect and analyze social media data using modern data analysis techniques.
 
-I am proud that this project has allowed me to demonstrate my Python programming skills and add another item to my portfolio!
+Please let me know if you have any questions or concerns about this scraping project. I am happy to provide additional context or clarify any details as needed.
+
+Thank you in advance.
+
+Best regards,
+Douwe Tjerkstra
