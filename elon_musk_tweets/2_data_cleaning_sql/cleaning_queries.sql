@@ -35,7 +35,16 @@ WHERE LENGTH(tweetAttachment) = 0
 -- Next step will be to change the different kind of tweetAttachments in easy to understand values -- 
 
 UPDATE tweet_data
-SET tweetAttachment = IF(LENGTH(tweetAttachment) = 0, "None", IF(tweetAttachment LIKE "%media_keys%", "Media", IF(tweetAttachment LIKE "%poll_ids%", "Poll", "None")))
+-- SET tweetAttachment = IF(LENGTH(tweetAttachment) = 0, "None", IF(tweetAttachment LIKE "%media_keys%", "Media", IF(tweetAttachment LIKE "%poll_ids%", "Poll", "None")))
+SET tweetAttachment = CASE 
+						WHEN LENGTH(tweetAttachment) = 0 THEN "None"
+						WHEN tweetAttachment LIKE "%media_keys%" THEN "Media"
+						WHEN tweetAttachment LIKE "%poll_ids%" THEN "Poll"
+						ELSE "None"
+						END
+						
+ALTER TABLE tweet_data
+ADD COLUMN tweetAttachment VARCHAR(50)
 
 ------------------------------------------------------------------------------------------
 
@@ -75,12 +84,12 @@ ALTER TABLE tweet_data
 ADD COLUMN tweetLanFull VARCHAR(50)
 
 UPDATE tweet_data
-SET tweetLanFull = 
-IF(tweetLanguage = "en", "English", 
-IF(tweetLanguage = "zxx", "No linguistic content",
-IF(tweetLanguage = "und", "Undefined",
-IF(tweetLanguage = "qst", "Very short text",
-IF(tweetLanguage = "art", "Artificial",
+SET tweetLanFull = CASE
+WHEN tweetLanguage = "en" THEN "English"
+WHEN tweetLanguage = "zxx" THEN "No linguistic content"
+WHEN tweetLanguage = "und" THEN "Undefined"
+WHEN tweetLanguage = "qst" THEN "Very short text"
+WHEN tweetLanguage = "art" THEN "Artificial"
 IF(tweetLanguage = "fr", "French",
 IF(tweetLanguage = "in", "Indonesian",
 IF(tweetLanguage = "pt", "Portuguese",
