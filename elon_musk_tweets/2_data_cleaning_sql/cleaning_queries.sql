@@ -205,4 +205,3 @@ ALTER TABLE tweet_sentiment
 RENAME COLUMN sentimentNew TO tweetSentiment
 
 ------------------------------------------------------------------------------------------
-
