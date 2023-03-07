@@ -190,9 +190,12 @@ ALTER TABLE tweet_sentiment
 ADD COLUMN sentimentNew VARCHAR(30)
 
 UPDATE tweet_sentiment
-SET sentimentNew = IF(tweetSentiment LIKE "%negative%", "negative",
-IF(tweetSentiment LIKE "%positive%", "positive",
-IF(tweetSentiment LIKE "%neutral%", "neutral","unknown")))
+SET sentimentNew = CASE
+WHEN tweetSentiment LIKE "%negative%" THEN "negative"
+WHEN tweetSentiment LIKE "%positive%" THEN "positive"
+WHEN tweetSentiment LIKE "%neutral%" THEN "neutral"
+ELSE "unknown"
+END;
 
 ALTER TABLE tweet_sentiment
 DROP COLUMN tweetSentiment
