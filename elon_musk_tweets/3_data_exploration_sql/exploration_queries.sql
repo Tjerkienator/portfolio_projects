@@ -105,6 +105,27 @@ WHERE tweetSentiment = "positive")
 
 SELECT *
 FROM positive_tweets
-WHERE tweetLanFull = "English"
+-- WHERE tweetLanFull = "English"
 
 ------------------------------------------------------------------------------------------
+
+-- TEMP TABLE --
+
+-- Creating a TEMP TABLE to do further calculations
+
+DROP TABLE IF EXISTS #positive_tweets
+CREATE TABLE #positive_tweets
+
+
+WITH positive_tweets AS (
+SELECT tweet_data.*, tweet_sentiment.tweetSentiment AS tweetSentiment
+FROM tweet_data
+JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
+WHERE tweetSentiment = "positive")
+
+
+-- Selecting English tweets only
+
+SELECT *
+FROM #positive_tweets
+WHERE tweetLanFull = "English"
