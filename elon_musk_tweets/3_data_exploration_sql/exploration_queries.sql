@@ -98,7 +98,7 @@ WITH positive_tweets AS (
 SELECT tweet_data.*, tweet_sentiment.tweetSentiment AS tweetSentiment
 FROM tweet_data
 JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
-WHERE tweetSentiment = "Positive")
+WHERE tweetSentiment = "positive")
 
 
 -- Selecting English tweets only
