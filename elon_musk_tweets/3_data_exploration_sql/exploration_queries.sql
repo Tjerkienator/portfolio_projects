@@ -141,3 +141,7 @@ WHERE tweetLanFull = "English"
 -- CREATING VIEW --
 
 CREATE VIEW positive_tweets AS 
+SELECT tweet_data.tweetId, tweet_data.tweetLength, tweet_data.tweetLanFull, tweet_sentiment.tweetSentiment AS tweetSentiment
+FROM tweet_data
+JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
+WHERE tweetSentiment = "positive"
