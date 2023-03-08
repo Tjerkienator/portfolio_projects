@@ -140,3 +140,4 @@ WHERE tweetLanFull = "English"
 
 -- CREATING VIEW --
 
+CREATE VIEW positive_tweets AS 
