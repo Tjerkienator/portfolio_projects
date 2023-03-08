@@ -137,3 +137,6 @@ FROM positive_tweets
 WHERE tweetLanFull = "English"
 
 ------------------------------------------------------------------------------------------
+
+-- CREATING VIEW --
+
