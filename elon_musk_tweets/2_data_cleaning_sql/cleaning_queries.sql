@@ -172,7 +172,7 @@ DROP COLUMN possiblySensitive
 
 -- tweetSentiment -- 
 
--- I need to clean up the tweetSentiment column because not all cells contain workable values. -- 
+-- I need to clean up the tweetSentiment column because not all cells contain workable values. 
 
 SELECT *
 FROM tweet_sentiment
