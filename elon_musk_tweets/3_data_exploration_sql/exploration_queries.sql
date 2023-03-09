@@ -161,3 +161,5 @@ JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
 
 SELECT * 
 FROM export
+
+------------------------------------------------------------------------------------------
