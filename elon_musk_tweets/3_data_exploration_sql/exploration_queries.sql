@@ -152,6 +152,7 @@ WHERE tweetSentiment = "positive"
 
 -- Creating view for final csv export which I will use in Tableau.
 
+DROP VIEW IF EXISTS export
 CREATE VIEW export AS 
 SELECT tweet_data.*, tweet_sentiment.tweetSentiment AS tweetSentiment
 FROM tweet_data
