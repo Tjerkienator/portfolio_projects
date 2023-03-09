@@ -147,3 +147,17 @@ JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
 WHERE tweetSentiment = "positive"
 
 ------------------------------------------------------------------------------------------
+
+-- CREATING VIEW --
+
+-- Creating view for final csv export which I will use in Tableau.
+
+CREATE VIEW export AS 
+SELECT tweet_data.*, tweet_sentiment.tweetSentiment AS tweetSentiment
+FROM tweet_data
+JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
+
+-- Selecting everything from export view.
+
+SELECT * 
+FROM export
