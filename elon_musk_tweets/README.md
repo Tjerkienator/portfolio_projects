@@ -8,7 +8,7 @@ Next, I applied data exploration techniques using SQL to identify correlations, 
 
 Finally, I leveraged Tableau Public to create interactive data visualizations that effectively communicated my findings to stakeholders. By presenting my insights through data dashboards, I made it easier for decision-makers to comprehend the data, which could aid in making informed decisions.
 
-Through this project, I demonstrated my ability to translate raw data into actionable insights that could inform business decisions. I would be thrilled to apply my skills and knowledge to similar tasks in your organization. Thank you for considering my application.
+Through this project, I demonstrated my ability to translate raw data into actionable insights that could inform business decisions. I would be thrilled to apply my skills and knowledge to similar tasks in your organization.
 
 Sincerely,
 
