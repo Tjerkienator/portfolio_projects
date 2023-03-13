@@ -10,6 +10,8 @@ The project will require proficiency in Tableau, data visualization, and design 
 
 The resulting dashboards from this project will provide valuable information about the relation between the sentiment of tweets and the engagement created from that tweet.
 
+Please open the "tableau_public_dashboard.md" to find the dashboard URL.
+
 If you have any questions or require further details, please do not hesitate to contact me.
 
 Thank you in advance.
