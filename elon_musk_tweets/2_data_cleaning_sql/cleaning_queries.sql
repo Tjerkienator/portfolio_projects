@@ -208,6 +208,9 @@ RENAME COLUMN sentimentNew TO tweetSentiment
 
 -- DELETING ROWS -- 
 
+-- I will remove all rows that have tweetSentiment = "unknown" as value.
 
+DELETE FROM tweet_sentiment
+WHERE tweetSentiment = "unknown"
 
 ------------------------------------------------------------------------------------------
