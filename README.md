@@ -1,4 +1,4 @@
-# Data Analysis Project Portfolios
+# Data Analysis Project Portfolio
 
 I am pleased to introduce my Github repository that showcases my portfolio projects as a data analyst. Throughout my career, I have gained experience in several programming languages, tools, and techniques that have enabled me to analyze complex data sets effectively. 
 
