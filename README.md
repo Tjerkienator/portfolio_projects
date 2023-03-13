@@ -12,7 +12,7 @@ My Github repository is organized in folders, with each folder containing a dist
 
 Through my portfolio projects, I have demonstrated my ability to handle complex data sets, clean and transform data, identify patterns and correlations, and communicate insights effectively through data visualizations.
 
-I believe that my skills and expertise in data analysis could be an asset to your organization, and I would be thrilled to discuss how I could contribute to your team. Thank you for considering my application.
+I believe that my skills and expertise in data analysis could be an asset to your organization, and I would be thrilled to discuss how I could contribute to your team.
 
 Sincerely,
 
