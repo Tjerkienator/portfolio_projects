@@ -151,12 +151,13 @@ WHERE tweetSentiment = "positive"
 -- CREATING VIEW --
 
 -- Creating view for final csv export which I will use in Tableau.
+-- I will use a RIGHT JOIN to make sure I only get the rows where there is a tweetSentiment value.
 
 DROP VIEW IF EXISTS export
 CREATE VIEW export AS 
 SELECT tweet_data.*, tweet_sentiment.tweetSentiment AS tweetSentiment
 FROM tweet_data
-JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
+RIGHT JOIN tweet_sentiment ON tweet_data.tweetId = tweet_sentiment.tweetId
 
 -- Selecting everything from export view.
 
